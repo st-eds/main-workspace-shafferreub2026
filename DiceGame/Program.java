@@ -6,14 +6,13 @@ public class Program
     static int base = 0;
     static int diceAmount = 1;
     static int points = 0;
-    static boolean playing = true;
+    static final boolean PLAYING = true;
 
     public static void main(String[] args) 
     {
         System.out.println("Welcome to my Dice Game!");
-        while (playing)
+        while (PLAYING)
         {
-        System.out.println("Points: " + points);
         menu();
         }
     }
@@ -54,16 +53,15 @@ public class Program
     }
     static int rollDice1()
     {
-        return (int) (Math.random() + (1+base))*mult;
+        return (int) (Math.random()*6 + (1+base))*mult;
     }
-    static int rollDice2()
+    static void rollDice2()
     {
         for (int i = 0; i < diceAmount; i++)
         {
             points += rollDice1();
         }
-
-        return points;
+        System.out.println("Points: " + points);
     }
     static int shop()
     {
@@ -73,6 +71,8 @@ public class Program
     {
         System.out.println("Stats:\nMultiplier: " + mult);
         System.out.println("Base Value: " + base);
+        System.out.println("\nPress enter to continue...");
+        input.nextLine();
         return;
     }
     static void rules()
